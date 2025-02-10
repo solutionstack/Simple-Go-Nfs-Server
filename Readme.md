@@ -1,4 +1,4 @@
-![build](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![build](https://github.com/github/docs/actions/workflows/go.yml/badge.svg)
 
 # Network File System in Go
 
