@@ -27,8 +27,7 @@ var replicaNodes []string
 
 func (m *MasterNode) Run(_ *kingpin.ParseContext) error {
 	var httpSrv *server.Server //the http server to expose callable api's
-	//the http server service package, its outside the go routine its created as it needs to
-	//be updated once the nfs filer-server is created
+
 	var httpSvc *service.HttpService
 
 	c := make(chan os.Signal, 1)
@@ -41,7 +40,7 @@ func (m *MasterNode) Run(_ *kingpin.ParseContext) error {
 	g.Go(func() error {
 		//start http server
 
-		//handlers
+		//handlers,service
 		httpSvc = service.NewHttpService(Log, m.StoragePath, replicaNodes)
 		httpHandler := handlers.NewHttpHandler(httpSvc, &Log)
 		mux := router.RouterMux(httpHandler)
